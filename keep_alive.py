@@ -2,15 +2,15 @@
 import requests
 import time
 
-# Replace with your actual Streamlit app URL
-URL = "https://nextplay.streamlit.app"
+URL = "https://nextplaygaming.streamlit.app/"
 
-def ping():
+with open("ping_log.txt", "a") as log:
     try:
         response = requests.get(URL)
-        print(f"[{time.ctime()}] Pinged {URL} - Status: {response.status_code}")
+        msg = f"[{time.ctime()}] Pinged {URL} - Status: {response.status_code}"
+        print(msg)
+        log.write(msg + "\n")
     except Exception as e:
-        print(f"[{time.ctime()}] Failed to ping {URL}: {e}")
-
-if __name__ == "__main__":
-    ping()
+        msg = f"[{time.ctime()}] Failed to ping {URL}: {e}"
+        print(msg)
+        log.write(msg + "\n")
